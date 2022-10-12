@@ -545,6 +545,7 @@
   <script>
     //Server Side Tracking Function
     function serverSideTracking(eventName, eventUrl, eventId) {
+      console.log("This fired");
       fetch('/server-side-tracking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -556,15 +557,15 @@
       })
     }
     //Index Page Events
-    window.onload = serverSideTracking("Index Page View", window.location.href, "1").then(console.log("1"));;
-    var eventTwo1 = document.getElementById("eventTwo1");
-    eventTwo1.addEventListener("click", serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2")).then(console.log("2"));
+    window.onload = serverSideTracking("Index Page View", window.location.href, "1");
+    /*var eventTwo1 = document.getElementById("eventTwo1");
+    eventTwo1.addEventListener("click", serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2"));
     var eventTwo2 = document.getElementById("eventTwo2");
-    eventTwo2.addEventListener("click", serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2")).then(console.log("3"));;
+    eventTwo2.addEventListener("click", serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2"));
     var eventThree1 = document.getElementById("eventThree1");
-    eventThree1.addEventListener("click", serverSideTracking("Index Page Submit Button Click", window.location.href, "3")).then(console.log("4"));;
+    eventThree1.addEventListener("click", serverSideTracking("Index Page Submit Button Click", window.location.href, "3"));
     var eventThree2 = document.getElementById("eventThree2");
-    eventThree2.addEventListener("click", serverSideTracking("Index Page Submit Button Click", window.location.href, "3")).then(console.log("5"));;       
+    eventThree2.addEventListener("click", serverSideTracking("Index Page Submit Button Click", window.location.href, "3"));*/
   </script>
 </body>
 

@@ -40,14 +40,14 @@ router.post("*/server-side-tracking", async (req, res) => {
     await axios.post(`https://graph.facebook.com/v9.0/${pixel_id}/events?access_token=${access_token}`, {
       data: [
         {
-          "event_name": req.body.eventName,
-          "event_time": current_timestamp,
+          "event_name": "Index Page View",
+          "event_time": 1665550936,
           "action_source": "website",
-          "event_id": req.body.eventId,
-          "event_source_url": req.body.eventUrl,
+          "event_id": "1",
+          "event_source_url": "https://www.accently.ai/",
           "user_data": {
-            "client_ip_address": req.clientIp,
-            "client_user_agent": req.headers['user-agent']
+            "client_ip_address": "100.64.0.168",
+            "client_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36"
           }
         }
       ]
@@ -117,3 +117,7 @@ app.post("*/charge", async (req, res) => {
 app.use("/", router);
 
 module.exports.handler = serverless(app);
+
+//Ideas
+//1. Try hard coding the values getting sent to see if you can just successfully make a request to Facebook
+//2. If necessary 
