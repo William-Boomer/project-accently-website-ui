@@ -115,23 +115,23 @@ router.post("*/server-side-tracking", async (req, res) => {
 
     console.log("2");
 
-    return {
+    callback(null, {
       statusCode: 200,
       body: JSON.stringify({
-        message: response
+        result: "Success"
       })
-    };
+    });
 
   } catch (err) {
 
     console.log("3");
     console.log("Error: " + err);
-    return {
-      statusCode: 400,
+    callback(null, {
+      statusCode: 200,
       body: JSON.stringify({
-        message: err
+        result: err
       })
-    };
+    });
 
   }
 })
