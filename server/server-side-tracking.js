@@ -12,7 +12,7 @@ const pixel_id = process.env.FACEBOOK_PIXEL_ID;
 const api = bizSdk.FacebookAdsApi.init(access_token);
 
 exports.handler = async (event, context) => {
-  console.log("Event Object: " + event);
+  console.log("Event Object: " + event.body);
   return {
     statusCode: 200,
     body: "Success",
