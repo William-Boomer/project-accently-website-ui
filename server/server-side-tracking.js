@@ -13,32 +13,36 @@ const api = bizSdk.FacebookAdsApi.init(access_token);
 
 exports.handler = async (event, context) => {
   console.log("Event Object: " + event.body);
+  const clientIp = requestIp.getClientIp(event);
+  console.log("IP Address: " + clientIp);
   return {
     statusCode: 200,
     body: "Success",
   };
+
+
   /*let current_timestamp = Math.floor(new Date() / 1000);
 
   try {
     console.log("1");
-    console.log("Event Name" + req.body.eventName);
+    console.log("Event Name" + event.body.eventName);
     console.log("Event Time" + current_timestamp);
-    console.log("Event ID" + req.body.eventId);
-    console.log("Event URL" + req.body.eventUrl);
-    console.log("Event IP" + req.clientIp);
-    console.log("Event IP" + req.headers['user-agent']);
+    console.log("Event ID" + event.body.eventId);
+    console.log("Event URL" + event.body.eventUrl);
+    console.log("Event IP" + event.body.clientIp);
+    console.log("Event IP" + event.body.headers['user-agent']);
 
     const userData = (new UserData())
-      .setClientIpAddress(req.clientIp)
-      .setClientUserAgent(req.headers['user-agent']);
+      .setClientIpAddress(event.body.clientIp)
+      .setClientUserAgent(event.body.headers['user-agent']);
 
     const serverEvent = (new ServerEvent())
-      .setEventName(req.body.eventName)
+      .setEventName(event.body.eventName)
       .setEventTime(current_timestamp)
       .setUserData(userData)
-      .setEventSourceUrl(req.body.eventUrl)
+      .setEventSourceUrl(event.body.eventUrl)
       .setActionSource('website')
-      .setEventId(req.body.eventId);
+      .setEventId(event.body.eventId);
 
     const eventsData = [serverEvent];
     const eventRequest = (new EventRequest(access_token, pixel_id))
