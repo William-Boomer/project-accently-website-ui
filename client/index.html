@@ -738,7 +738,7 @@
     });
   </script>
   <script>
-    //Server Side Tracking Function
+    /*//Server Side Tracking Function
     function serverSideTracking(eventName, eventUrl, eventId) {
       console.log("This fired");
       fetch('/server-side-tracking', {
@@ -750,7 +750,25 @@
           eventId: eventId
         })
       })
+    }*/
+
+    async function serverSideTracking(eventName, eventUrl, eventId) {
+      await axios
+        .post(
+          "/server-side-tracking",
+          {
+            eventName: eventName,
+            eventUrl: eventUrl,
+            eventId: eventId
+          }
+
+        )
+        .then((response) => {
+          console.log("Success: " + response.data);
+        })
+        .catch((err) => console.log("Failed: " + err));
     }
+
     //Index Page Events
     window.onload = serverSideTracking("Index Page View", window.location.href, "1");
     /*var eventTwo1 = document.getElementById("eventTwo1");
