@@ -117,9 +117,10 @@ router.post("*/server-side-tracking", async (req, res) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        message: "Success"
-      })
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message: "Success" }),
     };
 
   } catch (err) {
@@ -127,10 +128,11 @@ router.post("*/server-side-tracking", async (req, res) => {
     console.log("3");
     console.log("Error: " + err);
     return {
-      statusCode: 400,
-      body: JSON.stringify({
-        message: err
-      })
+      statusCode: 200,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ message: err }),
     };
 
   }
