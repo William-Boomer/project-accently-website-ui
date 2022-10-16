@@ -533,24 +533,6 @@
   <script src="js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
   <script>
-    var eventTwo1 = document.getElementById("eventTwo1");
-    eventTwo1.addEventListener("click", function () {
-      fbq('trackCustom', 'Index Page Get Early Access Button Click', { eventID: '2' });
-    });
-    var eventTwo2 = document.getElementById("eventTwo2");
-    eventTwo2.addEventListener("click", function () {
-      fbq('trackCustom', 'Index Page Get Early Access Button Click', { eventID: '2' });
-    });
-    var eventThree1 = document.getElementById("eventThree1");
-    eventThree1.addEventListener("click", function () {
-      fbq('trackCustom', 'Index Page Submit Button Click', { eventID: '3' });
-    });
-    var eventThree2 = document.getElementById("eventThree2");
-    eventThree2.addEventListener("click", function () {
-      fbq('trackCustom', 'Index Page Submit Button Click', { eventID: '3' });
-    });
-  </script>
-  <script>
     //Server Side Tracking Function
     async function serverSideTracking(eventName, eventUrl, eventId) {
       await axios
@@ -570,14 +552,30 @@
 
     //Index Page Events
     window.onload = serverSideTracking("Index Page View", window.location.href, "1");
+
     var eventTwo1 = document.getElementById("eventTwo1");
-    eventTwo1.addEventListener("click", serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2"));
+    eventTwo1.addEventListener("click", async function () {
+      await serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2");
+      await fbq('trackCustom', 'Index Page Get Early Access Button Click', { eventID: '2' });
+    });
+
     var eventTwo2 = document.getElementById("eventTwo2");
-    eventTwo2.addEventListener("click", serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2"));
+    eventTwo2.addEventListener("click", async function () {
+      await serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2");
+      await fbq('trackCustom', 'Index Page Get Early Access Button Click', { eventID: '2' });
+    });
+
     var eventThree1 = document.getElementById("eventThree1");
-    eventThree1.addEventListener("submit", serverSideTracking("Index Page Submit Button Click", window.location.href, "3"));
+    eventThree1.addEventListener("submit", async function () {
+      await serverSideTracking("Index Page Submit Button Click", window.location.href, "3");
+      await fbq('trackCustom', 'Index Page Submit Button Click', { eventID: '3' });
+    });
+
     var eventThree2 = document.getElementById("eventThree2");
-    eventThree2.addEventListener("submit", serverSideTracking("Index Page Submit Button Click", window.location.href, "3"));
+    eventThree2.addEventListener("submit", async function () {
+      await serverSideTracking("Index Page Submit Button Click", window.location.href, "3");
+      await fbq('trackCustom', 'Index Page Submit Button Click', { eventID: '3' });
+    });
   </script>
 </body>
 
