@@ -32,7 +32,7 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 302,
       headers: {
-        "Location": "https://accently.ai/eary-access"
+        "Location": "https://accently.ai/early-access"
       },
       body: "Success",
     };

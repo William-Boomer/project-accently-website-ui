@@ -5,13 +5,11 @@ exports.handler = async (event, context) => {
   console.log("1");
   console.log("Event Object: " + event);
   console.log("Event Body Object: " + event.body);
-  const array = event.body.split("email=");
-  console.log("Array: " + array);
-  const email = decodeURIComponent(array[1]);
-  console.log("Email: " + email);
+  const array = event.body.split("stripeToken=");
+  console.log("Stripe Token: " + array[1]);
 
   try {
-    const token = data.stripeToken;
+    const token = array[1];
 
     const charge = await stripe.charges.create(
       {
@@ -25,7 +23,7 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 200,
       headers: {
-        "Location": "/thank-you-eary-access"
+        "Location": "https://accently.ai/thank-you-early-access"
       },
       body: "Success",
     };
