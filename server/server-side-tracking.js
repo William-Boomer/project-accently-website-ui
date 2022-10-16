@@ -15,25 +15,19 @@ exports.handler = async (event, context) => {
 
   const current_timestamp = Math.floor(new Date() / 1000);
   const clientIp = requestIp.getClientIp(event);
-  console.log("Headers: " + event.headers);
-  console.log("User Agent: " + event.headers['user-agent']);
-  return {
-    statusCode: 200,
-    body: "Success",
-  };
 
-  /*try {
+  try {
     console.log("1");
     console.log("Event Name" + event.body.eventName);
     console.log("Event Time" + current_timestamp);
     console.log("Event ID" + event.body.eventId);
     console.log("Event URL" + event.body.eventUrl);
     console.log("Event IP" + clientIp);
-    console.log("Event IP" + event.body.headers['user-agent']);
+    console.log("Event IP" + event.headers['user-agent']);
 
     const userData = (new UserData())
       .setClientIpAddress(clientIp)
-      .setClientUserAgent(event.body.headers['user-agent']);
+      .setClientUserAgent(event.headers['user-agent']);
 
     const serverEvent = (new ServerEvent())
       .setEventName(event.body.eventName)
@@ -65,5 +59,5 @@ exports.handler = async (event, context) => {
       body: "Error",
     };
 
-  }*/
+  }
 };
