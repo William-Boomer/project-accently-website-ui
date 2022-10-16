@@ -26,6 +26,8 @@ exports.handler = async (event, context) => {
     console.log("Email: " + data.phoneNumber);
 
     const userData = (new UserData())
+      .setEmails([data.email])
+      .setPhones([data.phoneNumber])
       .setClientIpAddress(clientIp)
       .setClientUserAgent(event.headers['user-agent']);
 

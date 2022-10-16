@@ -572,6 +572,7 @@
     var eventThree1 = document.getElementById("eventThree1");
     eventThree1.addEventListener("submit", function () {
       const email = document.getElementById('email1').value;
+      console.log("Email: " + email);
       serverSideTracking("Index Page Submit Button Click", window.location.href, "3", email, null);
       fbq('trackCustom', 'Index Page Submit Button Click', { eventID: '3' });
     });
@@ -579,6 +580,7 @@
     var eventThree2 = document.getElementById("eventThree2");
     eventThree2.addEventListener("submit", function () {
       const email = document.getElementById('email2').value;
+      console.log("Email: " + email);
       serverSideTracking("Index Page Submit Button Click", window.location.href, "3", email, null);
       fbq('trackCustom', 'Index Page Submit Button Click', { eventID: '3' });
     });
