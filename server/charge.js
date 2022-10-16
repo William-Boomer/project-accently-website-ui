@@ -2,9 +2,9 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 exports.handler = async (event, context) => {
 
-  const name = event.body.split("name=")[1].split("email=")[0];
+  const name = event.body.split("name=")[1].split("&email=")[0].replaceAll('+', ' ');
   console.log("Name: " + name);
-  const email = event.body.split("email=")[1].split("stripeToken=")[0];
+  const email = event.body.split("email=")[1].split("&stripeToken=")[0];
   console.log("Name: " + email);
   const stripeToken = event.body.split("stripeToken=")[1];
   console.log("Stripe Token: " + stripeToken);
