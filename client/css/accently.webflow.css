@@ -1274,6 +1274,10 @@ p {
   left: auto;
 }
 
+.menu-button.display-none {
+  display: none;
+}
+
 .section-2 {
   padding-top: 0px;
 }
@@ -3814,6 +3818,10 @@ p {
   margin-left: 50px;
 }
 
+.nav-menu.display-none {
+  display: none;
+}
+
 .div-block-119 {
   width: 90%;
   height: 100vh;
@@ -5805,7 +5813,13 @@ p {
   }
 
   .submit-button-2.new {
-    display: none;
+    display: block;
+    padding-right: 20px;
+    padding-left: 20px;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
   }
 
   .heading-15 {
@@ -6914,7 +6928,7 @@ p {
   }
 
   .brand {
-    width: 100px;
+    width: 70%;
   }
 
   .menu-button {

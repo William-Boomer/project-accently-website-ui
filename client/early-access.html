@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--  This site was created in Webflow. https://www.webflow.com  -->
-<!--  Last Published: Tue Oct 11 2022 07:18:41 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Sun Oct 16 2022 01:59:10 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="633aa6fc68e0aad245c5deeb" data-wf-site="6271d71c0a9a983e97383a40">
 
 <head>
@@ -252,16 +252,20 @@
   </script>
   <script>
     //Server Side Tracking Function
-    function serverSideTracking(eventName, eventUrl, eventId) {
-      fetch('/server-side-tracking', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          eventName: eventName,
-          eventUrl: eventUrl,
-          eventId: eventId
+    async function serverSideTracking(eventName, eventUrl, eventId) {
+      await axios
+        .post(
+          "/server-side-tracking",
+          {
+            eventName: eventName,
+            eventUrl: eventUrl,
+            eventId: eventId
+          }
+        )
+        .then((response) => {
+          console.log("Success: " + response.data);
         })
-      })
+        .catch((err) => console.log("Failed: " + err));
     }
     //Index Page Events
     window.onload = serverSideTracking("Early Access Page View", window.location.href, "4");
