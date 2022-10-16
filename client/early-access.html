@@ -243,14 +243,16 @@
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
   <script>
     //Server Side Tracking Function
-    async function serverSideTracking(eventName, eventUrl, eventId) {
+    async function serverSideTracking(eventName, eventUrl, eventId, email, phoneNumber) {
       await axios
         .post(
           "/server-side-tracking",
           {
             eventName: eventName,
             eventUrl: eventUrl,
-            eventId: eventId
+            eventId: eventId,
+            email: email,
+            phoneNumber: phoneNumber
           }
         )
         .then((response) => {
@@ -258,17 +260,18 @@
         })
         .catch((err) => console.log("Failed: " + err));
     }
+
     //Index Page Events
-    window.onload = serverSideTracking("Early Access Page View", window.location.href, "4");
+    window.onload = serverSideTracking("Early Access Page View", window.location.href, "4", null, null);
 
     var eventFive = document.getElementById("eventFive");
     eventFive.addEventListener("click", function () {
-      serverSideTracking("Early Access Page Get Early Access Button Click", window.location.href, "5");
+      serverSideTracking("Early Access Page Get Early Access Button Click", window.location.href, "5", null, null);
       fbq('trackCustom', 'Early Access Page Get Early Access Button Click', { eventID: '5' });
     });
     var eventSix = document.getElementById("eventSix");
     eventSix.addEventListener("click", function () {
-      serverSideTracking("Early Access Page Submit Button Click", window.location.href, "6");
+      serverSideTracking("Early Access Page Submit Button Click", window.location.href, "6", null, null);
       fbq('trackCustom', 'Early Access Page Submit Button Click', { eventID: '6' });
     });      
   </script>

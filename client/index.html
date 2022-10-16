@@ -553,7 +553,7 @@
     }
 
     //Index Page Events
-    window.onload = serverSideTracking("Index Page View", window.location.href, "1");
+    window.onload = serverSideTracking("Index Page View", window.location.href, "1", null, null);
 
     var eventTwo1 = document.getElementById("eventTwo1");
     eventTwo1.addEventListener("click", function () {
@@ -570,7 +570,6 @@
     var eventThree1 = document.getElementById("eventThree1");
     eventThree1.addEventListener("submit", function () {
       const email = document.getElementById('email1').value;
-      console.log("Email: " + email);
       serverSideTracking("Index Page Submit Button Click", window.location.href, "3", email, null);
       fbq('trackCustom', 'Index Page Submit Button Click', { eventID: '3' });
     });
@@ -578,7 +577,6 @@
     var eventThree2 = document.getElementById("eventThree2");
     eventThree2.addEventListener("submit", function () {
       const email = document.getElementById('email2').value;
-      console.log("Email: " + email);
       serverSideTracking("Index Page Submit Button Click", window.location.href, "3", email, null);
       fbq('trackCustom', 'Index Page Submit Button Click', { eventID: '3' });
     });
