@@ -5,26 +5,22 @@ const shortid = require("shortid");
 
 exports.handler = async (event, context) => {
 
-  console.log("1");
-  console.log("Event Object: " + event);
-  console.log("Event Body Object: " + event.body);
   const array = event.body.split("email=");
-  console.log("Array" + array);
+  console.log("Array: " + array);
   const email = decodeURIComponent(array[1]);
-  console.log("Email" + email);
-  const data = JSON.parse(event.body);
+  console.log("Email: " + email);
 
   try {
     console.log("2");
     mongoose.connect(process.env.MONGO_URI);
 
-    const existingUser = await User.findOne({ email: data.email });
+    const existingUser = await User.findOne({ email: email });
     console.log("3");
 
     if (!existingUser) {
       const shortIdVariable = shortid.generate();
       const user = await new User({
-        email: data.email,
+        email: email,
         referralId: shortIdVariable,
         numberOfReferrals: 0
       }).save();
