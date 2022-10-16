@@ -6,9 +6,7 @@ const shortid = require("shortid");
 exports.handler = async (event, context) => {
 
   const array = event.body.split("email=");
-  console.log("Array: " + array);
   const email = decodeURIComponent(array[1]);
-  console.log("Email: " + email);
 
   try {
     console.log("2");
