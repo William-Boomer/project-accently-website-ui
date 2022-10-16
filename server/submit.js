@@ -30,9 +30,9 @@ exports.handler = async (event, context) => {
     console.log("5");
 
     return {
-      statusCode: 200,
+      statusCode: 302,
       headers: {
-        "Location": "/eary-access"
+        "Location": "https://accently.ai/eary-access"
       },
       body: "Success",
     };
