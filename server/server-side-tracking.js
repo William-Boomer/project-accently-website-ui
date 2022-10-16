@@ -1,8 +1,5 @@
 const requestIp = require('request-ip');
 const bizSdk = require('facebook-nodejs-business-sdk');
-const Content = bizSdk.Content;
-const CustomData = bizSdk.CustomData;
-const DeliveryCategory = bizSdk.DeliveryCategory;
 const EventRequest = bizSdk.EventRequest;
 const UserData = bizSdk.UserData;
 const ServerEvent = bizSdk.ServerEvent;
@@ -57,7 +54,7 @@ exports.handler = async (event, context) => {
     console.log("Error: " + err);
     return {
       statusCode: 400,
-      body: "Error",
+      body: err,
     };
 
   }
