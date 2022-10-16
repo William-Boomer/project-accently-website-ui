@@ -26,7 +26,7 @@ exports.handler = async (event, context) => {
     console.log("Email: " + data.email);
     console.log("Phone: " + data.phoneNumber);
 
-    const email = data.email;
+    /*const email = data.email;
     const phoneNumber = data.phoneNumber;
 
     if (email.toString() = ! null) {
@@ -37,11 +37,11 @@ exports.handler = async (event, context) => {
     if (phoneNumber.toString() = ! null) {
       data.email = createHash('sha256').update(data.phoneNumber).digest('hex');
       console.log("Phone Updated: " + data.phoneNumber);
-    }
+    }*/
 
     const userData = (new UserData())
-      .setEmails([data.email])
-      .setPhones([data.phoneNumber])
+      //.setEmails([data.email])
+      //.setPhones([data.phoneNumber])
       .setClientIpAddress(clientIp)
       .setClientUserAgent(event.headers['user-agent']);
 
