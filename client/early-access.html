@@ -262,14 +262,14 @@
     window.onload = serverSideTracking("Early Access Page View", window.location.href, "4");
 
     var eventFive = document.getElementById("eventFive");
-    eventFive.addEventListener("click", async function () {
-      await serverSideTracking("Early Access Page Get Early Access Button Click", window.location.href, "5");
-      await fbq('trackCustom', 'Early Access Page Get Early Access Button Click', { eventID: '5' });
+    eventFive.addEventListener("click", function () {
+      serverSideTracking("Early Access Page Get Early Access Button Click", window.location.href, "5");
+      fbq('trackCustom', 'Early Access Page Get Early Access Button Click', { eventID: '5' });
     });
     var eventSix = document.getElementById("eventSix");
-    eventSix.addEventListener("click", async function () {
-      await serverSideTracking("Early Access Page Submit Button Click", window.location.href, "6");
-      await fbq('trackCustom', 'Early Access Page Submit Button Click', { eventID: '6' });
+    eventSix.addEventListener("click", function () {
+      serverSideTracking("Early Access Page Submit Button Click", window.location.href, "6");
+      fbq('trackCustom', 'Early Access Page Submit Button Click', { eventID: '6' });
     });      
   </script>
   <script>

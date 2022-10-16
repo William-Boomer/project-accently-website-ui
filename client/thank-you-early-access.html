@@ -219,9 +219,9 @@
     window.onload = serverSideTracking("Thank You Page View", window.location.href, "7");
 
     var eventEight = document.getElementById("eventEight");
-    eventEight.addEventListener("click", async function () {
-      await serverSideTracking("Thank You Page Join Private Facebook Group Button Click", window.location.href, "8");
-      await fbq('trackCustom', 'Thank You Page Join Private Facebook Group Button Click', { eventID: '8' });
+    eventEight.addEventListener("click", function () {
+      serverSideTracking("Thank You Page Join Private Facebook Group Button Click", window.location.href, "8");
+      fbq('trackCustom', 'Thank You Page Join Private Facebook Group Button Click', { eventID: '8' });
     });    
   </script>
 </body>

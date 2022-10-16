@@ -554,27 +554,27 @@
     window.onload = serverSideTracking("Index Page View", window.location.href, "1");
 
     var eventTwo1 = document.getElementById("eventTwo1");
-    eventTwo1.addEventListener("click", async function () {
-      await serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2");
-      await fbq('trackCustom', 'Index Page Get Early Access Button Click', { eventID: '2' });
+    eventTwo1.addEventListener("click", function () {
+      serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2");
+      fbq('trackCustom', 'Index Page Get Early Access Button Click', { eventID: '2' });
     });
 
     var eventTwo2 = document.getElementById("eventTwo2");
-    eventTwo2.addEventListener("click", async function () {
-      await serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2");
-      await fbq('trackCustom', 'Index Page Get Early Access Button Click', { eventID: '2' });
+    eventTwo2.addEventListener("click", function () {
+      serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2");
+      fbq('trackCustom', 'Index Page Get Early Access Button Click', { eventID: '2' });
     });
 
     var eventThree1 = document.getElementById("eventThree1");
-    eventThree1.addEventListener("submit", async function () {
-      await serverSideTracking("Index Page Submit Button Click", window.location.href, "3");
-      await fbq('trackCustom', 'Index Page Submit Button Click', { eventID: '3' });
+    eventThree1.addEventListener("submit", function () {
+      serverSideTracking("Index Page Submit Button Click", window.location.href, "3");
+      fbq('trackCustom', 'Index Page Submit Button Click', { eventID: '3' });
     });
 
     var eventThree2 = document.getElementById("eventThree2");
-    eventThree2.addEventListener("submit", async function () {
-      await serverSideTracking("Index Page Submit Button Click", window.location.href, "3");
-      await fbq('trackCustom', 'Index Page Submit Button Click', { eventID: '3' });
+    eventThree2.addEventListener("submit", function () {
+      serverSideTracking("Index Page Submit Button Click", window.location.href, "3");
+      fbq('trackCustom', 'Index Page Submit Button Click', { eventID: '3' });
     });
   </script>
 </body>
