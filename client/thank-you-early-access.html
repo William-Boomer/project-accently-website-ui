@@ -51,7 +51,7 @@
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
         n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
       if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
       n.queue = []; t = b.createElement(e); t.async = !0;
@@ -201,7 +201,7 @@
   <script>
     //Server Side Tracking Function
     async function serverSideTracking(eventName, eventUrl, eventId) {
-      await axios
+      /*await axios
         .post(
           "/server-side-tracking",
           {
@@ -213,6 +213,19 @@
         .then((response) => {
           console.log("Success: " + response.data);
         })
+        .catch((err) => console.log("Failed: " + err));*/
+
+      await fetch('/server-side-tracking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          eventName: eventName,
+          eventUrl: eventUrl,
+          eventId: eventId
+        })
+      }).then((response) => {
+        console.log("Success: " + response.data);
+      })
         .catch((err) => console.log("Failed: " + err));
     }
     //Index Page Events
