@@ -18,7 +18,7 @@ exports.handler = async (event, context) => {
 
   try {
     console.log("1");
-    console.log("Event Name" + event.body[eventName]);
+    console.log("Event Name" + event.body["eventName"]);
     console.log("Event Time" + current_timestamp);
     console.log("Event ID" + event.body.eventId);
     console.log("Event URL" + event.body.eventUrl);
@@ -30,7 +30,7 @@ exports.handler = async (event, context) => {
       .setClientUserAgent(event.headers['user-agent']);
 
     const serverEvent = (new ServerEvent())
-      .setEventName(event.body[eventName])
+      .setEventName(event.body["eventName"])
       .setEventTime(current_timestamp)
       .setUserData(userData)
       .setEventSourceUrl(event.body.eventUrl)
