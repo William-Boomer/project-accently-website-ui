@@ -16,19 +16,13 @@ exports.handler = async (event, context) => {
   const current_timestamp = Math.floor(new Date() / 1000);
   const clientIp = requestIp.getClientIp(event);
   const data = JSON.parse(event.body);
-  console.log("Body Test Object: " + data);
-  console.log("Body Event Name Test: " + data.eventName);
-  return {
-    statusCode: 200,
-    body: "Success",
-  };
 
-  /*try {
+  try {
     console.log("1");
-    console.log("Event Name" + event.body["eventName"]);
+    console.log("Event Name" + data.eventName);
     console.log("Event Time" + current_timestamp);
-    console.log("Event ID" + event.body.eventId);
-    console.log("Event URL" + event.body.eventUrl);
+    console.log("Event ID" + data.eventId);
+    console.log("Event URL" + data.eventUrl);
     console.log("Event IP" + clientIp);
     console.log("Event IP" + event.headers['user-agent']);
 
@@ -37,12 +31,12 @@ exports.handler = async (event, context) => {
       .setClientUserAgent(event.headers['user-agent']);
 
     const serverEvent = (new ServerEvent())
-      .setEventName(event.body["eventName"])
+      .setEventName(data.eventName)
       .setEventTime(current_timestamp)
       .setUserData(userData)
-      .setEventSourceUrl(event.body.eventUrl)
+      .setEventSourceUrl(data.eventUrl)
       .setActionSource('website')
-      .setEventId(event.body.eventId);
+      .setEventId(data.eventId);
 
     const eventsData = [serverEvent];
     const eventRequest = (new EventRequest(access_token, pixel_id))
@@ -66,5 +60,5 @@ exports.handler = async (event, context) => {
       body: "Error",
     };
 
-  }*/
+  }
 };
