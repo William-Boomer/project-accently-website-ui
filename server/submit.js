@@ -6,6 +6,8 @@ const shortid = require("shortid");
 exports.handler = async (event, context) => {
 
   console.log("1");
+  console.log("Event Object: " + event);
+  console.log("Event Body Object: " + event.body);
   const data = JSON.parse(event.body);
 
   try {
