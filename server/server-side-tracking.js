@@ -22,6 +22,8 @@ exports.handler = async (event, context) => {
     console.log("Event URL" + data.eventUrl);
     console.log("Event IP" + clientIp);
     console.log("Event IP" + event.headers['user-agent']);
+    console.log("Email: " + data.email);
+    console.log("Email: " + data.phoneNumber);
 
     const userData = (new UserData())
       .setClientIpAddress(clientIp)
@@ -37,7 +39,7 @@ exports.handler = async (event, context) => {
 
     const eventsData = [serverEvent];
     const eventRequest = (new EventRequest(access_token, pixel_id))
-      //.setTestEventCode("TEST99073")
+      .setTestEventCode("TEST99073")
       .setEvents(eventsData);
 
     const response = await eventRequest.execute()

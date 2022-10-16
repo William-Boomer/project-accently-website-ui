@@ -106,9 +106,10 @@
             <h1 class="heading-178">Enter Your Email</h1>
             <div class="form-block-3 w-form">
               <form id="eventThree2" name="email-form" data-name="Email Form" action="/submit" method="post"
-                class="form-2"><input type="email" class="text-field-3 w-input" maxlength="256" name="Email-2"
-                  data-name="Email 2" placeholder="johndoe@gmail.com" id="Email-2" required=""><input type="submit"
-                  id="eventThree2" value="Submit" data-wait="Please wait..." class="button popup w-button"></form>
+                class="form-2"><input id="email1" type="email" class="text-field-3 w-input" maxlength="256"
+                  name="Email-2" data-name="Email 2" placeholder="johndoe@gmail.com" id="Email-2" required=""><input
+                  type="submit" id="eventThree2" value="Submit" data-wait="Please wait..."
+                  class="button popup w-button"></form>
               <div class="w-form-done">
                 <div>Thank you! Your submission has been received!</div>
               </div>
@@ -145,9 +146,10 @@
               <div class="div-block-6">
                 <div class="form-block-13 w-form">
                   <form id="eventThree1" name="email-form" data-name="Email Form" action="/submit" method="post"
-                    class="form-3"><input type="email" class="text-field-12 w-input" maxlength="256" name="email"
-                      data-name="Email" placeholder="Enter your email" id="email" required=""><input type="submit"
-                      id="eventThree1" value="Submit" data-wait="Please wait..." class="submit-button-7 w-button">
+                    class="form-3"><input id="email2" type="email" class="text-field-12 w-input" maxlength="256"
+                      name="email" data-name="Email" placeholder="Enter your email" id="email" required=""><input
+                      type="submit" id="eventThree1" value="Submit" data-wait="Please wait..."
+                      class="submit-button-7 w-button">
                   </form>
                   <div class="w-form-done">
                     <div>Thank you! Your submission has been received!</div>
@@ -534,14 +536,16 @@
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
   <script>
     //Server Side Tracking Function
-    async function serverSideTracking(eventName, eventUrl, eventId) {
+    async function serverSideTracking(eventName, eventUrl, eventId, email, phoneNumber) {
       await axios
         .post(
           "/server-side-tracking",
           {
             eventName: eventName,
             eventUrl: eventUrl,
-            eventId: eventId
+            eventId: eventId,
+            email: email,
+            phoneNumber: phoneNumber
           }
         )
         .then((response) => {
@@ -555,25 +559,27 @@
 
     var eventTwo1 = document.getElementById("eventTwo1");
     eventTwo1.addEventListener("click", function () {
-      serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2");
+      serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2", null, null);
       fbq('trackCustom', 'Index Page Get Early Access Button Click', { eventID: '2' });
     });
 
     var eventTwo2 = document.getElementById("eventTwo2");
     eventTwo2.addEventListener("click", function () {
-      serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2");
+      serverSideTracking("Index Page Get Early Access Button Click", window.location.href, "2", null, null);
       fbq('trackCustom', 'Index Page Get Early Access Button Click', { eventID: '2' });
     });
 
     var eventThree1 = document.getElementById("eventThree1");
     eventThree1.addEventListener("submit", function () {
-      serverSideTracking("Index Page Submit Button Click", window.location.href, "3");
+      const email = document.getElementById('email1').value;
+      serverSideTracking("Index Page Submit Button Click", window.location.href, "3", email, null);
       fbq('trackCustom', 'Index Page Submit Button Click', { eventID: '3' });
     });
 
     var eventThree2 = document.getElementById("eventThree2");
     eventThree2.addEventListener("submit", function () {
-      serverSideTracking("Index Page Submit Button Click", window.location.href, "3");
+      const email = document.getElementById('email2').value;
+      serverSideTracking("Index Page Submit Button Click", window.location.href, "3", email, null);
       fbq('trackCustom', 'Index Page Submit Button Click', { eventID: '3' });
     });
   </script>
