@@ -8,10 +8,11 @@ exports.handler = async (event, context) => {
   const data = JSON.parse(event.body);
 
   try {
-
+    console.log("1");
     mongoose.connect(process.env.MONGO_URI);
 
     const existingUser = await User.findOne({ email: data.email });
+    console.log("2");
 
     if (!existingUser) {
       const shortIdVariable = shortid.generate();
@@ -21,7 +22,9 @@ exports.handler = async (event, context) => {
         numberOfReferrals: 0
       }).save();
     }
+    console.log("3");
     mongoose.disconnect();
+    console.log("4");
 
     return {
       statusCode: 200,
