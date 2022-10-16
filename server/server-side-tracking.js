@@ -15,12 +15,9 @@ exports.handler = async (event, context) => {
 
   const current_timestamp = Math.floor(new Date() / 1000);
   const clientIp = requestIp.getClientIp(event);
-  console.log("Event Object: " + event.body.eventName);
-  console.log("Event Name: " + event.body.eventName);
-
-  const body = JSON.stringify(event.body);
-  console.log("Body Test Object: " + body);
-  console.log("Body Event Name Test: " + body.eventName);
+  const data = JSON.parse(event.body);
+  console.log("Body Test Object: " + data);
+  console.log("Body Event Name Test: " + data.eventName);
   return {
     statusCode: 200,
     body: "Success",
