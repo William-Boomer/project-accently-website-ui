@@ -16,24 +16,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-//Email submission endpoint
-router.post("*/submit", async (req, res) => {
-  mongoose.connect(process.env.MONGO_URI);
-
-  const existingUser = await User.findOne({ email: req.body.email });
-
-  if (!existingUser) {
-    const shortIdVariable = shortid.generate();
-    const user = await new User({
-      email: req.body.email,
-      referralId: shortIdVariable,
-      numberOfReferrals: 0
-    }).save();
-  }
-  mongoose.disconnect();
-  res.redirect("/early-access");
-});
-
 //Stripe Payment Endpoint
 app.post("*/charge", async (req, res) => {
   const token = req.body.stripeToken;
