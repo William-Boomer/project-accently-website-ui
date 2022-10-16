@@ -26,12 +26,12 @@ exports.handler = async (event, context) => {
     console.log("Email: " + data.email);
     console.log("Phone: " + data.phoneNumber);
 
-    if (data.email.toString() = ! null) {
+    if ((data.email).toString() = ! null) {
       data.email = createHash('sha256').update(data.email).digest('hex');
       console.log("Email Updated: " + data.email);
     }
 
-    if (data.phoneNumber.toString() = ! null) {
+    if ((data.phoneNumber).toString() = ! null) {
       data.email = createHash('sha256').update(data.phoneNumber).digest('hex');
       console.log("Phone Updated: " + data.phoneNumber);
     }
