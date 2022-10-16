@@ -16,8 +16,7 @@ exports.handler = async (event, context) => {
   const current_timestamp = Math.floor(new Date() / 1000);
   const clientIp = requestIp.getClientIp(event);
   console.log("Headers: " + event.headers);
-  let requestHeaders = Object.fromEntries(event.headers);
-  console.log(requestHeaders["user-agent"]);
+  console.log("User Agent: " + event.headers['user-agent']);
   return {
     statusCode: 200,
     body: "Success",
