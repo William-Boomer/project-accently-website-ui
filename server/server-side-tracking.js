@@ -37,7 +37,7 @@ exports.handler = async (event, context) => {
 
     const eventsData = [serverEvent];
     const eventRequest = (new EventRequest(access_token, pixel_id))
-      .setTestEventCode("TEST99073")
+      //.setTestEventCode("TEST99073")
       .setEvents(eventsData);
 
     const response = await eventRequest.execute()
