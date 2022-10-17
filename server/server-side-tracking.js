@@ -28,10 +28,12 @@ exports.handler = async (event, context) => {
   console.log("5");
   let email = null;
   console.log("6");
-  if (cookies.emailHash) {
-    console.log("7");
-    email = cookies.emailHash;
-    console.log("8");
+  if (cookies) {
+    if (cookies.emailHash) {
+      console.log("7");
+      email = cookies.emailHash;
+      console.log("8");
+    }
   }
   //const email = cookies.emailHash || null;
   console.log("Email: " + email);
