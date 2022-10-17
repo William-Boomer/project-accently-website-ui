@@ -15,14 +15,30 @@ exports.handler = async (event, context) => {
   const current_timestamp = Math.floor(new Date() / 1000);
   const clientIp = requestIp.getClientIp(event);
   const data = JSON.parse(event.body);
-  const cookies = cookie.parse(event.headers.cookie) || null;
-  console.log("Cookies: " + JSON.stringify(cookies));
+  console.log("1");
+  let cookies = null;
+  console.log("2");
+  if (event.headers.cookie) {
+    console.log("3");
+    cookies = cookie.parse(event.headers.cookie);
+    console.log("4");
+  }
+  console.log("Cookies" + JSON.stringify(cookies));
 
-  const email = cookies.emailHash || null;
+  console.log("5");
+  let email = null;
+  console.log("6");
+  if (cookies.emailHash) {
+    console.log("7");
+    email = cookies.emailHash;
+    console.log("8");
+  }
+  //const email = cookies.emailHash || null;
   console.log("Email: " + email);
 
   try {
-    console.log("1");
+    console.log("9");
+    console.log("Cookies 2: " + JSON.stringify(cookies));
 
     /*console.log("Event Name" + data.eventName);
     console.log("Event Time" + current_timestamp);
@@ -54,7 +70,7 @@ exports.handler = async (event, context) => {
 
     const response = await eventRequest.execute()
 
-    console.log("2");
+    console.log("10");
 
     return {
       statusCode: 200,
@@ -63,7 +79,7 @@ exports.handler = async (event, context) => {
 
   } catch (err) {
 
-    console.log("3");
+    console.log("11");
     console.log("Error: " + err);
     return {
       statusCode: 400,
