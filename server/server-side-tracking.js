@@ -21,10 +21,11 @@ exports.handler = async (event, context) => {
   }
 
   let email = null;
+  console.log("emailHash: " + cookies.emailHash);
   if (!cookies.emailHash) {
     email = null;
   } else {
-    email = emailHash;
+    email = cookies.emailHash;
   }
   //const email = cookies.emailHash || null;
   console.log("Email: " + email);
