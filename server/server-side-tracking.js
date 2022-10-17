@@ -15,40 +15,19 @@ exports.handler = async (event, context) => {
   const current_timestamp = Math.floor(new Date() / 1000);
   const clientIp = requestIp.getClientIp(event);
   const data = JSON.parse(event.body);
-  console.log("1");
   let cookies = null;
-  console.log("2");
   if (event.headers.cookie) {
-    console.log("3");
     cookies = cookie.parse(event.headers.cookie);
-    console.log("4");
   }
-  console.log("Cookies: " + JSON.stringify(cookies));
 
-  console.log("5");
   let email = null;
-  console.log("6");
   if (cookies) {
     if (cookies.emailHash) {
-      console.log("7");
       email = cookies.emailHash;
-      console.log("8");
     }
   }
-  //const email = cookies.emailHash || null;
-  console.log("Email: " + email);
 
   try {
-    console.log("9");
-
-    /*console.log("Event Name" + data.eventName);
-    console.log("Event Time" + current_timestamp);
-    console.log("Event ID" + data.eventId);
-    console.log("Event URL" + data.eventUrl);
-    console.log("Event IP" + clientIp);
-    console.log("Event IP" + event.headers['user-agent']);
-    console.log("Email: " + cookies.emailHash);
-    console.log("Phone: " + cookies.phoneHash);*/
 
     const userData = (new UserData())
       .setEmails([email])
@@ -70,8 +49,6 @@ exports.handler = async (event, context) => {
       .setEvents(eventsData);
 
     const response = await eventRequest.execute()
-
-    console.log("10");
 
     return {
       statusCode: 200,

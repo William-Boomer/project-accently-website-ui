@@ -11,11 +11,9 @@ exports.handler = async (event, context) => {
   const myCookie = cookie.serialize('emailHash', email);
 
   try {
-    console.log("2");
     mongoose.connect(process.env.MONGO_URI);
 
     const existingUser = await User.findOne({ email: email });
-    console.log("3");
 
     if (existingUser) {
 
@@ -30,9 +28,7 @@ exports.handler = async (event, context) => {
         numberOfReferrals: 0
       }).save();
     }
-    console.log("4");
     mongoose.disconnect();
-    console.log("5");
 
     return {
       statusCode: 302,
