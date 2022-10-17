@@ -15,38 +15,27 @@ exports.handler = async (event, context) => {
   const current_timestamp = Math.floor(new Date() / 1000);
   const clientIp = requestIp.getClientIp(event);
   const data = JSON.parse(event.body);
+  const cookies = cookie.parse(event.headers.cookie);
+  let email = null;
+
+  if (cookies.emailHash) {
+    email = cookies.emailHash;
+  }
 
   try {
     console.log("1");
-    console.log("Headers" + JSON.stringify(event.headers));
-    console.log("Cookie" + JSON.stringify(event.headers.cookie));
 
-    var cookies = cookie.parse(event.headers.cookie);
-    console.log("Email Hash: " + cookies.emailHash);
     /*console.log("Event Name" + data.eventName);
     console.log("Event Time" + current_timestamp);
     console.log("Event ID" + data.eventId);
     console.log("Event URL" + data.eventUrl);
     console.log("Event IP" + clientIp);
     console.log("Event IP" + event.headers['user-agent']);
-    console.log("Email: " + data.email);
-    console.log("Phone: " + data.phoneNumber);*/
-
-    /*const email = data.email;
-    const phoneNumber = data.phoneNumber;
-
-    if (email.toString() = ! null) {
-      data.email = createHash('sha256').update(data.email).digest('hex');
-      console.log("Email Updated: " + data.email);
-    }
-
-    if (phoneNumber.toString() = ! null) {
-      data.email = createHash('sha256').update(data.phoneNumber).digest('hex');
-      console.log("Phone Updated: " + data.phoneNumber);
-    }*/
+    console.log("Email: " + cookies.emailHash);
+    console.log("Phone: " + cookies.phoneHash);*/
 
     const userData = (new UserData())
-      //.setEmails([data.email])
+      .setEmails([email])
       //.setPhones([data.phoneNumber])
       .setClientIpAddress(clientIp)
       .setClientUserAgent(event.headers['user-agent']);
