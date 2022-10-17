@@ -15,9 +15,12 @@ exports.handler = async (event, context) => {
   const current_timestamp = Math.floor(new Date() / 1000);
   const clientIp = requestIp.getClientIp(event);
   const data = JSON.parse(event.body);
-  const cookies = cookie.parse(event.headers.cookie);
-  let email = null;
+  let cookies = null;
+  if (event.headers.cookie) {
+    cookies = cookie.parse(event.headers.cookie);
+  }
 
+  let email = null;
   if (cookies.emailHash) {
     email = cookies.emailHash;
   }
@@ -73,3 +76,7 @@ exports.handler = async (event, context) => {
 
   }
 };
+
+//1. Pass the email in the charge submission as well
+//2. Save the purchase data
+//3. Test everything one more time
