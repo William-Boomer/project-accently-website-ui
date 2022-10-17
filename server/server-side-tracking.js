@@ -22,9 +22,6 @@ exports.handler = async (event, context) => {
 
   const email = cookies.emailHash || null;
   console.log("Email: " + email);
-  /*if (cookies.emailHash) {
-    email = cookies.emailHash;
-  }*/
 
   try {
     console.log("1");
