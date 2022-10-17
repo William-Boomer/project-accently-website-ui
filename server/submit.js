@@ -17,14 +17,16 @@ exports.handler = async (event, context) => {
 
     if (existingUser) {
       //context.cookies.set("emailHash", email);
-      console.log("Existing User Context Object: " + JSON.stringify(context));
+      console.log("Context Object: " + JSON.stringify(context));
+      console.log("Event Object: " + JSON.stringify(event));
       //console.log("Existing User Cookie: " + context.cookies.get("email"));
     }
 
     if (!existingUser) {
       const shortIdVariable = shortid.generate();
       //context.cookies.set("emailHash", email);
-      console.log("New User Context Object: " + JSON.stringify(context));
+      console.log("Context Object: " + JSON.stringify(context));
+      console.log("Event Object: " + JSON.stringify(event));
       //console.log("New User Cookie: " + context.cookies.get("email"));
       const user = await new User({
         email: email,
