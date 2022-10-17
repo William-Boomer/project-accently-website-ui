@@ -20,8 +20,14 @@ exports.handler = async (event, context) => {
     cookies = cookie.parse(event.headers.cookie);
   }
 
+  let email = null;
+  if (!cookies.emailHash) {
+    email = null;
+  } else {
+    email = emailHash;
+  }
   //const email = cookies.emailHash || null;
-  //console.log("Email: " + email);
+  console.log("Email: " + email);
 
   try {
     console.log("1");
