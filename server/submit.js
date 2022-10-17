@@ -8,7 +8,7 @@ exports.handler = async (event, context) => {
 
   const array = event.body.split("email=");
   const email = decodeURIComponent(array[1]);
-  const myCookie = cookie.serialize('emailHash', email)
+  const myCookie = cookie.serialize('emailHash', email);
 
   try {
     console.log("2");
@@ -16,8 +16,6 @@ exports.handler = async (event, context) => {
 
     const existingUser = await User.findOne({ email: email });
     console.log("3");
-
-    const myCookie = cookie.serialize('emailHash', email);
 
     if (existingUser) {
 

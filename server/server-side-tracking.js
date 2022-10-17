@@ -15,15 +15,16 @@ exports.handler = async (event, context) => {
   const current_timestamp = Math.floor(new Date() / 1000);
   const clientIp = requestIp.getClientIp(event);
   const data = JSON.parse(event.body);
-  let cookies;
+  let cookies = null;
   if (event.headers.cookie) {
     cookies = cookie.parse(event.headers.cookie);
   }
 
-  let email = null;
-  if (cookies.emailHash) {
+  const email = cookies.emailHash || null;
+  console.log("Email: " + email);
+  /*if (cookies.emailHash) {
     email = cookies.emailHash;
-  }
+  }*/
 
   try {
     console.log("1");
