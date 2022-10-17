@@ -15,8 +15,17 @@ exports.handler = async (event, context) => {
     const existingUser = await User.findOne({ email: email });
     console.log("3");
 
+    if (existingUser) {
+      context.cookies.set("emailHash", email);
+      console.log("Existing User Context Object: " + context.cookies);
+      console.log("Existing User Cookie: " + cookies.get("email"));
+    }
+
     if (!existingUser) {
       const shortIdVariable = shortid.generate();
+      context.cookies.set("emailHash", email);
+      console.log("New User Context Object: " + context.cookies);
+      console.log("New User Cookie: " + cookies.get("email"));
       const user = await new User({
         email: email,
         referralId: shortIdVariable,
