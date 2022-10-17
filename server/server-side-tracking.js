@@ -17,14 +17,15 @@ exports.handler = async (event, context) => {
 
   try {
     console.log("1");
-    console.log("Event Name" + data.eventName);
+    console.log("Headers" + event.headers);
+    /*console.log("Event Name" + data.eventName);
     console.log("Event Time" + current_timestamp);
     console.log("Event ID" + data.eventId);
     console.log("Event URL" + data.eventUrl);
     console.log("Event IP" + clientIp);
     console.log("Event IP" + event.headers['user-agent']);
     console.log("Email: " + data.email);
-    console.log("Phone: " + data.phoneNumber);
+    console.log("Phone: " + data.phoneNumber);*/
 
     /*const email = data.email;
     const phoneNumber = data.phoneNumber;

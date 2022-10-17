@@ -2,11 +2,13 @@ const mongoose = require("mongoose");
 require("./customFunctions/userModel");
 const User = mongoose.model("users");
 const shortid = require("shortid");
+const cookie = require('cookie')
 
 exports.handler = async (event, context) => {
 
   const array = event.body.split("email=");
   const email = decodeURIComponent(array[1]);
+  const myCookie = cookie.serialize('emailHash', email)
 
   try {
     console.log("2");
@@ -16,18 +18,12 @@ exports.handler = async (event, context) => {
     console.log("3");
 
     if (existingUser) {
-      //context.cookies.set("emailHash", email);
-      console.log("Context Object: " + JSON.stringify(context));
-      console.log("Event Object: " + JSON.stringify(event));
-      //console.log("Existing User Cookie: " + context.cookies.get("email"));
+
     }
 
     if (!existingUser) {
       const shortIdVariable = shortid.generate();
-      //context.cookies.set("emailHash", email);
-      console.log("Context Object: " + JSON.stringify(context));
-      console.log("Event Object: " + JSON.stringify(event));
-      //console.log("New User Cookie: " + context.cookies.get("email"));
+
       const user = await new User({
         email: email,
         referralId: shortIdVariable,
@@ -41,7 +37,8 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 302,
       headers: {
-        "Location": "https://accently.ai/early-access"
+        "Location": "https://accently.ai/early-access",
+        'Set-Cookie': myCookie,
       },
       body: "Success",
     };
