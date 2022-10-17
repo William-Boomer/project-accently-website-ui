@@ -21,7 +21,7 @@ exports.handler = async (event, context) => {
   }
 
   let email = null;
-  if (cookies.emailHash = ! null) {
+  if (cookies.emailHash) {
     email = cookies.emailHash;
   }
 
