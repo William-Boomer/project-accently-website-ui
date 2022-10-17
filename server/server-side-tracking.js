@@ -17,7 +17,7 @@ exports.handler = async (event, context) => {
 
   try {
     console.log("1");
-    console.log("Headers" + event.headers);
+    console.log("Headers" + JSON.stringify(event.headers));
     /*console.log("Event Name" + data.eventName);
     console.log("Event Time" + current_timestamp);
     console.log("Event ID" + data.eventId);
