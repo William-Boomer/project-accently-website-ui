@@ -40,7 +40,6 @@ exports.handler = async (event, context) => {
 
   try {
     console.log("9");
-    console.log("Cookies 2: " + JSON.stringify(cookies));
 
     /*console.log("Event Name" + data.eventName);
     console.log("Event Time" + current_timestamp);
@@ -52,7 +51,7 @@ exports.handler = async (event, context) => {
     console.log("Phone: " + cookies.phoneHash);*/
 
     const userData = (new UserData())
-      //.setEmails([email])
+      .setEmails([email])
       //.setPhones([data.phoneNumber])
       .setClientIpAddress(clientIp)
       .setClientUserAgent(event.headers['user-agent']);
