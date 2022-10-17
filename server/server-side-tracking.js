@@ -20,8 +20,8 @@ exports.handler = async (event, context) => {
     cookies = cookie.parse(event.headers.cookie);
   }
 
-  const email = cookies.emailHash || null;
-  console.log("Email: " + email);
+  //const email = cookies.emailHash || null;
+  //console.log("Email: " + email);
 
   try {
     console.log("1");
@@ -37,7 +37,7 @@ exports.handler = async (event, context) => {
     console.log("Phone: " + cookies.phoneHash);*/
 
     const userData = (new UserData())
-      .setEmails([email])
+      //.setEmails([email])
       //.setPhones([data.phoneNumber])
       .setClientIpAddress(clientIp)
       .setClientUserAgent(event.headers['user-agent']);
