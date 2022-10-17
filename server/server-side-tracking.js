@@ -23,7 +23,7 @@ exports.handler = async (event, context) => {
     cookies = cookie.parse(event.headers.cookie);
     console.log("4");
   }
-  console.log("Cookies" + JSON.stringify(cookies));
+  console.log("Cookies: " + JSON.stringify(cookies));
 
   console.log("5");
   let email = null;
