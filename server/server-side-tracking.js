@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
   const current_timestamp = Math.floor(new Date() / 1000);
   const clientIp = requestIp.getClientIp(event);
   const data = JSON.parse(event.body);
-  let cookies = null;
+  let cookies;
   if (event.headers.cookie) {
     cookies = cookie.parse(event.headers.cookie);
   }
