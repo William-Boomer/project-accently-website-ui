@@ -89,7 +89,3 @@ exports.handler = async (event, context) => {
 
   }
 };
-
-//1. Pass the email in the charge submission as well
-//2. Save the purchase data
-//3. Test everything one more time
