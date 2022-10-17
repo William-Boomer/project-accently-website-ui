@@ -27,6 +27,7 @@ exports.handler = async (event, context) => {
 
   try {
     console.log("1");
+    console.log("Cookies: " + cookies);
 
     /*console.log("Event Name" + data.eventName);
     console.log("Event Time" + current_timestamp);
