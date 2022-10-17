@@ -4,6 +4,7 @@ const EventRequest = bizSdk.EventRequest;
 const UserData = bizSdk.UserData;
 const ServerEvent = bizSdk.ServerEvent;
 const { createHash } = require('crypto');
+const cookie = require('cookie');
 
 const access_token = process.env.FACEBOOK_ACCESS_TOKEN;
 const pixel_id = process.env.FACEBOOK_PIXEL_ID;
@@ -18,6 +19,10 @@ exports.handler = async (event, context) => {
   try {
     console.log("1");
     console.log("Headers" + JSON.stringify(event.headers));
+    console.log("Cookie" + JSON.stringify(event.headers.cookie));
+    console.log("Email Hash" + JSON.stringify(event.headers.emailHash));
+
+    //var cookies = cookie.parse('foo=bar; equation=E%3Dmc%5E2');
     /*console.log("Event Name" + data.eventName);
     console.log("Event Time" + current_timestamp);
     console.log("Event ID" + data.eventId);

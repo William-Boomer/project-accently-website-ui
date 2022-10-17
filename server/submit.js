@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 require("./customFunctions/userModel");
 const User = mongoose.model("users");
 const shortid = require("shortid");
-const cookie = require('cookie')
+const cookie = require('cookie');
 
 exports.handler = async (event, context) => {
 
