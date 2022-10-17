@@ -16,9 +16,10 @@ exports.handler = async (event, context) => {
   const clientIp = requestIp.getClientIp(event);
   const data = JSON.parse(event.body);
   let cookies = null;
-  if (event.headers.cookie) {
+  /*if (event.headers.cookie) {
     cookies = cookie.parse(event.headers.cookie);
-  }
+  }*/
+  console.log("Cookies 1: " + JSON.stringify(cookies));
 
   let email = null;
   console.log("emailHash: " + cookies.emailHash);
@@ -32,7 +33,7 @@ exports.handler = async (event, context) => {
 
   try {
     console.log("1");
-    console.log("Cookies: " + JSON.stringify(cookies));
+    console.log("Cookies 2: " + JSON.stringify(cookies));
 
     /*console.log("Event Name" + data.eventName);
     console.log("Event Time" + current_timestamp);
