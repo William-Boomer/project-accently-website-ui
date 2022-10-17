@@ -21,13 +21,13 @@ exports.handler = async (event, context) => {
   }
 
   let email = null;
-  if (cookies.emailHash) {
+  if (cookies.emailHash = ! null) {
     email = cookies.emailHash;
   }
 
   try {
     console.log("1");
-    console.log("Cookies: " + cookies);
+    console.log("Cookies: " + JSON.stringify(cookies));
 
     /*console.log("Event Name" + data.eventName);
     console.log("Event Time" + current_timestamp);
