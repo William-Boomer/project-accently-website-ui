@@ -3,7 +3,6 @@ const bizSdk = require('facebook-nodejs-business-sdk');
 const EventRequest = bizSdk.EventRequest;
 const UserData = bizSdk.UserData;
 const ServerEvent = bizSdk.ServerEvent;
-const { createHash } = require('crypto');
 const cookie = require('cookie');
 
 const access_token = process.env.FACEBOOK_ACCESS_TOKEN;
@@ -29,6 +28,7 @@ exports.handler = async (event, context) => {
 
   try {
 
+    console.log("Event Fired: " + data.eventId);
     const userData = (new UserData())
       .setEmails([email])
       //.setPhones([data.phoneNumber])
