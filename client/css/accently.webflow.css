@@ -1583,6 +1583,12 @@ p {
   grid-row-gap: 30px;
 }
 
+.div-block-48.abc.new.v2 {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .div-block-49 {
   width: 100%;
   padding: 40px;
@@ -4316,6 +4322,8 @@ p {
 
 .div-block-439 {
   width: 50%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .div-block-440 {
@@ -4323,16 +4331,18 @@ p {
 }
 
 .div-block-441 {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
   padding-top: 50px;
   padding-bottom: 50px;
-  padding-left: 10%;
+  padding-left: 0%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
@@ -4354,6 +4364,7 @@ p {
   color: #0b132a;
   font-size: 42px;
   line-height: 54px;
+  text-align: center;
 }
 
 .heading-177.blue {
@@ -4361,10 +4372,14 @@ p {
 }
 
 .paragraph-45 {
+  width: 600px;
+  margin-right: auto;
+  margin-left: auto;
   font-family: Rubik, sans-serif;
   color: #4f5665;
   font-size: 16px;
   line-height: 24px;
+  text-align: center;
 }
 
 .image-115 {
@@ -5049,14 +5064,21 @@ p {
     height: 100vh;
   }
 
+  .div-block-439 {
+    width: auto;
+  }
+
   .div-block-441 {
     height: 100vh;
     padding-top: 0px;
     padding-bottom: 0px;
+    padding-left: 0%;
   }
 
   .paragraph-45 {
     width: 600px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .image-116 {
@@ -6021,7 +6043,12 @@ p {
     width: 100%;
   }
 
+  .div-block-439 {
+    min-width: 500px;
+  }
+
   .div-block-441 {
+    padding-left: 0%;
     grid-column-gap: 30px;
     grid-row-gap: 30px;
   }
@@ -6645,7 +6672,7 @@ p {
   .div-block-441 {
     width: 90%;
     padding-top: 75px;
-    padding-bottom: 0px;
+    padding-bottom: 75px;
     padding-left: 0%;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -6660,6 +6687,10 @@ p {
     margin-left: auto;
     padding-top: 75px;
     padding-left: 0%;
+  }
+
+  .paragraph-45 {
+    width: auto;
   }
 
   .image-115.th {
