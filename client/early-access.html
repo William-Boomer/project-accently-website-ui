@@ -281,9 +281,9 @@
 
       await axios
         .post(
-          "/payment-card",
+          "/.netlify/functions/payment-card",
           {
-            amount:"100",
+            amount:"10000",
           }
         )
         .then(async (response) => {

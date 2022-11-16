@@ -1,12 +1,10 @@
-import Stripe from "stripe";
-
-const stripe = new Stripe('sk_test_51Lrnh3Hn5HPNBT2DHgZxIB7EYtwPMCRUxe9wEUc5LXQbDRuRRKQ7pBJccxVCGoOytN4UAtfiQKG6nOgxekqUI4nT00fYlNuUwH');
+const stripe = require("stripe")('sk_test_51Lrnh3Hn5HPNBT2DHgZxIB7EYtwPMCRUxe9wEUc5LXQbDRuRRKQ7pBJccxVCGoOytN4UAtfiQKG6nOgxekqUI4nT00fYlNuUwH');
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default async (req, res) => {
-  if (req.method === "POST") {
+exports.handler = async (event, context) => {
+  if (event.httpMethod === "POST") {
     try {
-      const amount = req.body.amount;
+      const amount = JSON.parse(event.body).amount;
      //console.log(amount)
 
       const paymentIntent = await stripe.paymentIntents.create({
